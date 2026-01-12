@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { getCourses } from '@/lib/api/courses';
 import type { Course } from '@/types/course';
+import { GraduationCap, Layout, School, School2 } from 'lucide-react';
 
 export default function Home() {
   const [latestCourse, setLatestCourse] = useState<Course | null>(null);
@@ -105,9 +106,9 @@ export default function Home() {
               <div className="group">
                 <div className="flex items-center gap-5 mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <span className="text-[#CFE6EA]">☸</span>
+                    <School className="text-[#D0A933]" />
                   </div>
-                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Guru–Shishya Mentorship</h3>
+                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Education with Mentorship</h3>
                 </div>
                 <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
                   Learn directly from seasoned mentors who guide your spiritual and intellectual growth.
@@ -118,7 +119,7 @@ export default function Home() {
               <div className="group">
                 <div className="flex items-center gap-5 mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <span className="text-[#CFE6EA]">♒</span>
+                    <Layout className="text-[#D0A933]" />
                   </div>
                   <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Structured Curriculum</h3>
                 </div>
@@ -131,13 +132,84 @@ export default function Home() {
               <div className="group">
                 <div className="flex items-center gap-5 mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <span className="text-[#CFE6EA]">🎯</span>
+                    <GraduationCap className="text-[#D0A933]" />
                   </div>
                   <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Proven Outcomes</h3>
                 </div>
                 <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
                   Achieve tangible, career-enhancing results through disciplined practice and assessment.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Comprehensive About Section */}
+        <section className="py-24 relative overflow-hidden">
+          {/* Background embellishments */}
+          <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#077D93]/10 rounded-full blur-[100px] -translate-y-1/2"></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+              {/* Image Side */}
+              <div className="relative order-2 lg:order-1">
+                <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl group">
+                  <div className="absolute inset-0 bg-[#04414d]/20 mix-blend-multiply"></div>
+                  <img
+                    src="https://images.unsplash.com/photo-1510531704581-5b2870972060?q=80&w=2073&auto=format&fit=crop"
+                    alt="Students learning"
+                    className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  {/* Floating Card */}
+                  <div className="absolute -bottom-6 -right-6 bg-[#04414d] border border-white/10 p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block">
+                    <p className="text-[#D0A933] font-serif italic text-lg mb-2">"Education is the manifestation of perfection already in man."</p>
+                    <p className="text-white/60 text-xs uppercase tracking-widest">— Swami Vivekananda</p>
+                  </div>
+                </div>
+
+                {/* Decorative Gold Frame */}
+                <div className="absolute top-6 -left-6 w-full h-full border-2 border-[#D0A933]/30 rounded-[2rem] -z-10 hidden sm:block"></div>
+              </div>
+
+              {/* Text Side */}
+              <div className="order-1 lg:order-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D0A933]/10 border border-[#D0A933]/20 text-[#D0A933] text-xs font-bold uppercase tracking-widest mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#D0A933]"></span>
+                  About Our Institution
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+                  A Sanctuary of <br />
+                  <span className="text-[#077D93]">Wisdom</span> & <span className="text-[#D0A933]">Character</span>
+                </h2>
+
+                <p className="text-[#E6E6E6] text-lg leading-relaxed mb-6">
+                  Satyakul Pathshala was founded with a singular mission: to bridge the gap between ancient Gurukul values and the demands of the modern world. We believe that true education goes beyond textbooks—it creates character, instills discipline, and fosters a lifelong thirst for knowledge.
+                </p>
+
+                <p className="text-[#E6E6E6]/80 text-lg leading-relaxed mb-8">
+                  Here, every student is a "Shishya," guided by dedicated mentors on a path of self-discovery and intellectual rigour. Our campus is a living ecosystem of learning, designed to inspire focus and creativity.
+                </p>
+
+                {/* Stats or Features Mini-grid */}
+                <div className="grid grid-cols-2 gap-6 border-t border-white/10 pt-8">
+                  <div>
+                    <h4 className="text-3xl font-serif font-bold text-white mb-1">50+</h4>
+                    <p className="text-[#CFE6EA] text-sm">Expert Mentors</p>
+                  </div>
+                  <div>
+                    <h4 className="text-3xl font-serif font-bold text-white mb-1">100%</h4>
+                    <p className="text-[#CFE6EA] text-sm">Holistic Growth</p>
+                  </div>
+                </div>
+
+                <div className="mt-10">
+                  <Link href="/about" className="text-[#D0A933] font-bold hover:text-white smooth-transition flex items-center gap-2 group tracking-widest uppercase text-sm">
+                    Discover Our Story <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
