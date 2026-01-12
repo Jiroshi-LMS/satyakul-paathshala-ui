@@ -63,13 +63,13 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-6 mb-4">
                   <Link
                     href="/courses"
-                    className="bg-[#D0A933] text-[#0B0B0B] font-bold px-10 py-5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-lg uppercase tracking-widest"
+                    className="bg-[#D0A933] text-[#0B0B0B] font-bold px-8 py-3.5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-sm uppercase tracking-widest"
                   >
                     Begin Your Learning Path
                   </Link>
                   <Link
                     href="/courses"
-                    className="flex items-center justify-center gap-2 text-white font-bold px-10 py-5 hover:text-[#D0A933] smooth-transition text-lg group uppercase tracking-widest"
+                    className="flex items-center justify-center gap-2 text-white font-bold px-8 py-3.5 hover:text-[#D0A933] smooth-transition text-sm group uppercase tracking-widest"
                   >
                     View Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
@@ -249,9 +249,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="text-2xl font-serif font-bold text-white mb-6">
-                <span className="text-[#D0A933]">Satyakul</span> Pathshala
-              </h3>
+              <div className="flex items-center gap-4 mb-6">
+                <img
+                  src="/logo.png"
+                  alt="Satyakul Pathshala Logo"
+                  className="w-8 h-8 object-contain"
+                />
+                <h3 className="text-2xl font-serif font-bold text-white">
+                  <span className="text-[#D0A933]">Satyakul</span> Pathshala
+                </h3>
+              </div>
               <p className="text-[#E6E6E6] leading-relaxed">
                 Nurturing wisdom and discipline through traditional values and modern excellence.
               </p>
