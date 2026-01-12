@@ -41,22 +41,22 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="text-left animate-fade-in-up">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#077D93]/10 text-[#077D93] text-sm font-semibold mb-8 border border-[#077D93]/20">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#077D93]/10 text-[white] text-sm font-semibold mb-8 border border-[#077D93]/20">
                   <span className="w-2 h-2 bg-[#D0A933] rounded-full mr-2 animate-pulse"></span>
-                  Admissions Open — Shikshan Satra 2026
+                  Admissions Open - 2026
                 </div>
 
-                <h1 className="text-6xl sm:text-8xl font-serif font-bold tracking-tight mb-6 leading-[1.05] text-white">
+                <h1 className="text-5xl sm:text-7xl font-serif font-bold tracking-tight mb-6 leading-[1.05] text-white">
                   Shaping Minds <br />
                   with Discipline
                 </h1>
 
-                <h2 className="text-2xl sm:text-4xl font-serif font-medium mb-10 italic">
+                <h2 className="text-xl sm:text-3xl font-serif font-medium mb-10 italic">
                   <span className="text-[#D0A933]">Rooted</span> in Values, <br />
                   <span className="text-[#D0A933]">Driven</span> by Excellence
                 </h2>
 
-                <p className="text-xl text-[#E6E6E6] mb-12 max-w-xl leading-relaxed">
+                <p className="text-lg text-[#E6E6E6] mb-12 max-w-xl leading-relaxed">
                   Guided learning under experienced mentors. Structured paths, rigorous practice, and timeless principles for modern success.
                 </p>
 
@@ -65,14 +65,14 @@ export default function Home() {
                     href="/courses"
                     className="bg-[#D0A933] text-[#0B0B0B] font-bold px-8 py-3.5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-sm uppercase tracking-widest"
                   >
-                    Begin Your Learning Path
+                    Start Your Journey
                   </Link>
-                  <Link
+                  {/* <Link
                     href="/courses"
                     className="flex items-center justify-center gap-2 text-white font-bold px-8 py-3.5 hover:text-[#D0A933] smooth-transition text-sm group uppercase tracking-widest"
                   >
                     View Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070"
                     alt="Satyakul Pathshala"
-                    className="w-full h-[650px] object-cover"
+                    className="w-full h-[500px] object-cover"
                   />
                   <div className="absolute bottom-10 left-10 right-10">
                     <div className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-2">Live Heritage</div>
