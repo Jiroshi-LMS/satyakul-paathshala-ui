@@ -46,29 +46,30 @@ export default function Home() {
                   Admissions Open — Shikshan Satra 2026
                 </div>
 
-                <h1 className="text-6xl sm:text-8xl font-serif font-bold tracking-tight mb-4 leading-[1.05]">
+                <h1 className="text-6xl sm:text-8xl font-serif font-bold tracking-tight mb-6 leading-[1.05] text-white">
                   Shaping Minds <br />
                   with Discipline
                 </h1>
 
-                <h2 className="text-2xl sm:text-4xl font-serif font-medium text-[#077D93] mb-8 italic">
-                  Rooted in Values, Driven by Excellence
+                <h2 className="text-2xl sm:text-4xl font-serif font-medium mb-10 italic">
+                  <span className="text-[#D0A933]">Rooted</span> in Values, <br />
+                  <span className="text-[#D0A933]">Driven</span> by Excellence
                 </h2>
 
-                <p className="text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
+                <p className="text-xl text-[#E6E6E6] mb-12 max-w-xl leading-relaxed">
                   Guided learning under experienced mentors. Structured paths, rigorous practice, and timeless principles for modern success.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex flex-col sm:flex-row gap-6 mb-4">
                   <Link
                     href="/courses"
-                    className="bg-[#D0A933] text-black font-bold px-10 py-5 rounded-xl hover:opacity-90 smooth-transition shadow-2xl shadow-[#D0A933]/20 text-center text-lg"
+                    className="bg-[#D0A933] text-[#0B0B0B] font-bold px-10 py-5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-lg uppercase tracking-widest"
                   >
                     Begin Your Learning Path
                   </Link>
                   <Link
                     href="/courses"
-                    className="flex items-center justify-center gap-2 text-foreground font-bold px-10 py-5 hover:text-[#D0A933] smooth-transition text-lg group"
+                    className="flex items-center justify-center gap-2 text-white font-bold px-10 py-5 hover:text-[#D0A933] smooth-transition text-lg group uppercase tracking-widest"
                   >
                     View Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
@@ -102,39 +103,39 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {/* Guru-Shishya Mentorship */}
               <div className="group">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[#077D93]/10 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#077D93]/20">
-                    <span className="text-[#077D93]">☸</span>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+                    <span className="text-[#CFE6EA]">☸</span>
                   </div>
-                  <h3 className="text-3xl font-serif font-bold border-b-2 border-[#D0A933]/30 pb-1">Guru–Shishya Mentorship</h3>
+                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Guru–Shishya Mentorship</h3>
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed pl-4 border-l border-[#077D93]/20">
+                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
                   Learn directly from seasoned mentors who guide your spiritual and intellectual growth.
                 </p>
               </div>
 
               {/* Structured Curriculum */}
               <div className="group">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[#077D93]/10 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#077D93]/20">
-                    <span className="text-[#077D93]">♒</span>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+                    <span className="text-[#CFE6EA]">♒</span>
                   </div>
-                  <h3 className="text-3xl font-serif font-bold border-b-2 border-[#D0A933]/30 pb-1">Structured Curriculum</h3>
+                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Structured Curriculum</h3>
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed pl-4 border-l border-[#077D93]/20">
+                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
                   Follow a clear, systematic path of learning designed for comprehensive mastery.
                 </p>
               </div>
 
               {/* Proven Outcomes */}
               <div className="group">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[#077D93]/10 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#077D93]/20">
-                    <span className="text-[#077D93]">🎯</span>
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+                    <span className="text-[#CFE6EA]">🎯</span>
                   </div>
-                  <h3 className="text-3xl font-serif font-bold border-b-2 border-[#D0A933]/30 pb-1">Proven Outcomes</h3>
+                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Proven Outcomes</h3>
                 </div>
-                <p className="text-muted-foreground text-lg leading-relaxed pl-4 border-l border-[#077D93]/20">
+                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
                   Achieve tangible, career-enhancing results through disciplined practice and assessment.
                 </p>
               </div>
@@ -149,10 +150,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
               <div>
-                <h2 className="text-sm font-bold uppercase tracking-widest text-[#077D93] mb-4">Current Teachings</h2>
-                <h3 className="text-4xl sm:text-5xl font-serif font-bold">Newest Course Launch</h3>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Teachings</h2>
+                <h3 className="text-4xl sm:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
               </div>
-              <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-lg">
+              <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-lg uppercase tracking-widest">
                 Explore All Offerings <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
@@ -162,7 +163,7 @@ export default function Home() {
                 <span className="text-muted-foreground font-medium">Preparing curriculum...</span>
               </div>
             ) : latestCourse ? (
-              <div className="bg-card rounded-[2.5rem] overflow-hidden shadow-2xl border border-border flex flex-col lg:flex-row hover:border-[#D0A933]/30 smooth-transition">
+              <div className="bg-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 flex flex-col lg:flex-row hover:border-[#D0A933]/30 smooth-transition">
                 <div className="lg:w-1/2 relative h-[350px] lg:h-auto overflow-hidden">
                   {latestCourse.thumbnail ? (
                     <img src={latestCourse.thumbnail} alt={latestCourse.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
@@ -177,33 +178,33 @@ export default function Home() {
                 </div>
                 <div className="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-xs font-bold uppercase text-[#077D93] bg-[#077D93]/10 px-4 py-1.5 rounded-full border border-[#077D93]/20">
+                    <span className="text-xs font-bold uppercase text-[#D0A933] bg-[#D0A933]/10 px-4 py-1.5 rounded-full border border-[#D0A933]/20">
                       High Demand
                     </span>
-                    <span className="text-sm text-muted-foreground flex items-center gap-1.5">
+                    <span className="text-sm text-[#CFE6EA] flex items-center gap-1.5">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                       {latestCourse.duration}
                     </span>
                   </div>
-                  <h4 className="text-4xl font-serif font-bold mb-6 hover:text-[#D0A933] transition-colors cursor-pointer leading-tight">
+                  <h4 className="text-4xl font-serif font-bold mb-6 text-white hover:text-[#D0A933] transition-colors cursor-pointer leading-tight">
                     {latestCourse.title}
                   </h4>
-                  <p className="text-lg text-muted-foreground mb-8 line-clamp-3 leading-relaxed">
+                  <p className="text-lg text-[#E6E6E6] mb-8 line-clamp-3 leading-relaxed">
                     {latestCourse.description}
                   </p>
                   <div className="flex flex-wrap items-center gap-8 justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-[#D0A933]/10 flex items-center justify-center font-serif font-bold text-[#D0A933] text-xl border border-[#D0A933]/20">
+                      <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center font-serif font-bold text-[#D0A933] text-xl border border-white/10">
                         {latestCourse.title[0]}
                       </div>
                       <div>
-                        <p className="text-xs font-bold uppercase text-muted-foreground">Adhyapak</p>
-                        <p className="font-bold">Pathshala Faculty</p>
+                        <p className="text-xs font-bold uppercase text-[#CFE6EA]">Adhyapak</p>
+                        <p className="font-bold text-white">Pathshala Faculty</p>
                       </div>
                     </div>
                     <Link
                       href={`/courses/${latestCourse.id}`}
-                      className="bg-[#D0A933] text-black font-bold px-10 py-4 rounded-xl hover:opacity-90 smooth-transition shadow-xl text-center"
+                      className="bg-[#D0A933] text-[#0B0B0B] font-bold px-10 py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-sm"
                     >
                       Enroll in Course
                     </Link>
@@ -224,18 +225,18 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#077D93]/5 rounded-full blur-[100px]"></div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-5xl sm:text-7xl font-serif font-bold mb-8 leading-tight">
+            <h2 className="text-5xl sm:text-7xl font-serif font-bold mb-8 leading-tight text-white">
               Begin Your Path to <br />
               <span className="text-[#D0A933]">Self-Mastery</span>
             </h2>
-            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+            <p className="text-xl text-[#E6E6E6] mb-12 max-w-2xl mx-auto">
               Join a community dedicated to excellence, values, and the pursuit of knowledge.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link href="/courses" className="bg-[#D0A933] text-black font-bold px-12 py-5 rounded-xl hover:opacity-90 smooth-transition text-xl shadow-2xl shadow-[#D0A933]/20">
+              <Link href="/courses" className="bg-[#D0A933] text-[#0B0B0B] font-bold px-12 py-5 rounded-xl hover:bg-[#b8952d] smooth-transition text-xl shadow-2xl shadow-[#D0A933]/10 uppercase tracking-widest">
                 Join the Pathshala
               </Link>
-              <Link href="/about" className="border border-[#077D93] text-[#077D93] font-bold px-12 py-5 rounded-xl hover:bg-[#077D93]/10 smooth-transition text-xl">
+              <Link href="/about" className="border border-white/20 text-white font-bold px-12 py-5 rounded-xl hover:bg-white/5 smooth-transition text-xl uppercase tracking-widest">
                 Talk to a Mentor
               </Link>
             </div>
@@ -244,40 +245,42 @@ export default function Home() {
       </main>
 
       {/* Modern Footer */}
-      <footer className="py-20 px-4 sm:px-6 lg:px-8 bg-background border-t border-border">
+      <footer className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0B0B0B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
             <div className="col-span-1 lg:col-span-1">
-              <h3 className="text-2xl font-serif font-bold text-[#D0A933] mb-6">Satyakul Pathshala</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <h3 className="text-2xl font-serif font-bold text-white mb-6">
+                <span className="text-[#D0A933]">Satyakul</span> Pathshala
+              </h3>
+              <p className="text-[#E6E6E6] leading-relaxed">
                 Nurturing wisdom and discipline through traditional values and modern excellence.
               </p>
             </div>
 
             <div>
-              <h4 className="font-bold text-foreground mb-6 uppercase tracking-wider text-xs text-[#077D93]">Nirdeshika</h4>
-              <ul className="space-y-4 font-medium text-muted-foreground">
-                <li><Link href="/courses" className="hover:text-[#D0A933] transition-colors">Course Catalog</Link></li>
-                <li><Link href="/" className="hover:text-[#D0A933] transition-colors">Success Stories</Link></li>
-                <li><Link href="/about" className="hover:text-[#D0A933] transition-colors">About Us</Link></li>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Nirdeshika</h4>
+              <ul className="space-y-4 font-medium text-[#CFE6EA]">
+                <li><Link href="/courses" className="hover:text-white transition-colors">Course Catalog</Link></li>
+                <li><Link href="/" className="hover:text-white transition-colors">Success Stories</Link></li>
+                <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-foreground mb-6 uppercase tracking-wider text-xs text-[#077D93]">Sanstha</h4>
-              <ul className="space-y-4 font-medium text-muted-foreground">
-                <li><Link href="/about" className="hover:text-[#D0A933] transition-colors">Our Vision</Link></li>
-                <li><Link href="/" className="hover:text-[#D0A933] transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/" className="hover:text-[#D0A933] transition-colors">Terms of Service</Link></li>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Sanstha</h4>
+              <ul className="space-y-4 font-medium text-[#CFE6EA]">
+                <li><Link href="/about" className="hover:text-white transition-colors">Our Vision</Link></li>
+                <li><Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/" className="hover:text-white transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-foreground mb-6 uppercase tracking-wider text-xs text-[#077D93]">Anusaran</h4>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Anusaran</h4>
               <div className="flex gap-4">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-lg bg-card border border-border flex items-center justify-center hover:border-[#D0A933]/50 cursor-pointer transition-all">
-                    <div className="w-5 h-5 bg-muted-foreground/50" />
+                  <div key={i} className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#D0A933]/50 cursor-pointer transition-all">
+                    <div className="w-5 h-5 bg-white/20" />
                   </div>
                 ))}
               </div>

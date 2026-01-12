@@ -20,9 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={openSans.variable} suppressHydrationWarning>
       <body
-        className={`${openSans.variable} antialiased`}
+        className="antialiased"
+        suppressHydrationWarning
       >
         <AuthProvider>
           {children}
