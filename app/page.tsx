@@ -42,10 +42,14 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="text-center md:text-left animate-fade-in-up">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#077D93]/10 text-[white] text-sm font-semibold mb-8 border border-[#077D93]/20">
+                <Link
+                  href={'https://www.youtube.com/@satyakulpaathshala'}
+                  target="_blank"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-[#077D93]/10 text-[white] text-sm font-semibold mb-8 border border-[#077D93]/20 hover:bg-[#077D93]/20 transition-colors"
+                >
                   <span className="w-2 h-2 bg-[#D0A933] rounded-full mr-2 animate-pulse"></span>
                   Available on Youtube
-                </div>
+                </Link>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] text-white">
                   Shaping Minds <br />
