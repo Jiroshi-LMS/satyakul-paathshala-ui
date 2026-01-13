@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { getCourses } from '@/lib/api/courses';
 import type { Course } from '@/types/course';
-import { GraduationCap, Layout, School, School2 } from 'lucide-react';
+import { GraduationCap, Layout, School, School2, Facebook, Youtube, Instagram } from 'lucide-react';
 
 export default function Home() {
   const [latestCourse, setLatestCourse] = useState<Course | null>(null);
@@ -35,7 +35,7 @@ export default function Home() {
 
       <main>
         {/* Modern Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[90vh] flex items-center">
+        <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[80vh] sm:min-h-[90vh] flex items-center">
           {/* Abstract Background Elements */}
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(7,125,147,0.1),transparent_50%)]"></div>
 
@@ -47,24 +47,24 @@ export default function Home() {
                   Admissions Open - 2026
                 </div>
 
-                <h1 className="text-5xl sm:text-7xl font-serif font-bold tracking-tight mb-6 leading-[1.05] text-white">
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] text-white">
                   Shaping Minds <br />
                   with Discipline
                 </h1>
 
-                <h2 className="text-xl sm:text-3xl font-serif font-medium mb-10 italic">
+                <h2 className="text-lg sm:text-xl lg:text-3xl font-serif font-medium mb-8 sm:mb-10 italic">
                   <span className="text-[#D0A933]">Rooted</span> in Values, <br />
                   <span className="text-[#D0A933]">Driven</span> by Excellence
                 </h2>
 
-                <p className="text-lg text-[#E6E6E6] mb-12 max-w-xl leading-relaxed">
+                <p className="text-base sm:text-lg text-[#E6E6E6] mb-8 sm:mb-12 max-w-xl leading-relaxed">
                   Guided learning under experienced mentors. Structured paths, rigorous practice, and timeless principles for modern success.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 mb-4">
                   <Link
                     href="/courses"
-                    className="bg-[#D0A933] text-[#0B0B0B] font-bold px-8 py-3.5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-sm uppercase tracking-widest"
+                    className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-xs sm:text-sm uppercase tracking-widest"
                   >
                     Start Your Journey
                   </Link>
@@ -82,7 +82,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <img
                     src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070"
-                    alt="Satyakul Pathshala"
+                    alt="Satyakul Paathshala"
                     className="w-full h-[500px] object-cover"
                   />
                   <div className="absolute bottom-10 left-10 right-10">
@@ -101,42 +101,42 @@ export default function Home() {
         {/* Feature Icons Section */}
         <section className="py-20 border-t border-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
               {/* Guru-Shishya Mentorship */}
               <div className="group">
-                <div className="flex items-center gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <School className="text-[#D0A933]" />
+                    <School className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Education with Mentorship</h3>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Education with Mentorship</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
                   Learn directly from seasoned mentors who guide your spiritual and intellectual growth.
                 </p>
               </div>
 
               {/* Structured Curriculum */}
               <div className="group">
-                <div className="flex items-center gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <Layout className="text-[#D0A933]" />
+                    <Layout className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Structured Curriculum</h3>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Structured Curriculum</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
                   Follow a clear, systematic path of learning designed for comprehensive mastery.
                 </p>
               </div>
 
               {/* Proven Outcomes */}
               <div className="group">
-                <div className="flex items-center gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
                   <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
-                    <GraduationCap className="text-[#D0A933]" />
+                    <GraduationCap className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Proven Outcomes</h3>
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Proven Outcomes</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-lg leading-relaxed pl-4 border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
                   Achieve tangible, career-enhancing results through disciplined practice and assessment.
                 </p>
               </div>
@@ -145,12 +145,12 @@ export default function Home() {
         </section>
 
         {/* Comprehensive About Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-16 sm:py-24 relative overflow-hidden">
           {/* Background embellishments */}
           <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#077D93]/10 rounded-full blur-[100px] -translate-y-1/2"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-16 items-center">
 
               {/* Image Side */}
               <div className="relative order-2 lg:order-1">
@@ -159,7 +159,7 @@ export default function Home() {
                   <img
                     src="https://images.unsplash.com/photo-1510531704581-5b2870972060?q=80&w=2073&auto=format&fit=crop"
                     alt="Students learning"
-                    className="w-full h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-[350px] sm:h-[450px] lg:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
                   {/* Floating Card */}
@@ -180,27 +180,27 @@ export default function Home() {
                   About Our Institution
                 </div>
 
-                <h2 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-6 leading-tight">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-4 sm:mb-6 leading-tight">
                   A Sanctuary of <br />
-                  <span className="text-[#077D93]">Wisdom</span> & <span className="text-[#D0A933]">Character</span>
+                  <span className="text-teal-500">Wisdom</span> & <span className="text-[#D0A933]">Character</span>
                 </h2>
 
-                <p className="text-[#E6E6E6] text-lg leading-relaxed mb-6">
-                  Satyakul Pathshala was founded with a singular mission: to bridge the gap between ancient Gurukul values and the demands of the modern world. We believe that true education goes beyond textbooks—it creates character, instills discipline, and fosters a lifelong thirst for knowledge.
+                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
+                  Satyakul Paathshala was founded with a singular mission: to bridge the gap between ancient Gurukul values and the demands of the modern world. We believe that true education goes beyond textbooks—it creates character, instills discipline, and fosters a lifelong thirst for knowledge.
                 </p>
 
-                <p className="text-[#E6E6E6]/80 text-lg leading-relaxed mb-8">
+                <p className="text-[#E6E6E6]/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
                   Here, every student is a "Shishya," guided by dedicated mentors on a path of self-discovery and intellectual rigour. Our campus is a living ecosystem of learning, designed to inspire focus and creativity.
                 </p>
 
                 {/* Stats or Features Mini-grid */}
-                <div className="grid grid-cols-2 gap-6 border-t border-white/10 pt-8">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 border-t border-white/10 pt-6 sm:pt-8">
                   <div>
-                    <h4 className="text-3xl font-serif font-bold text-white mb-1">50+</h4>
+                    <h4 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">50+</h4>
                     <p className="text-[#CFE6EA] text-sm">Expert Mentors</p>
                   </div>
                   <div>
-                    <h4 className="text-3xl font-serif font-bold text-white mb-1">100%</h4>
+                    <h4 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">100%</h4>
                     <p className="text-[#CFE6EA] text-sm">Holistic Growth</p>
                   </div>
                 </div>
@@ -216,16 +216,16 @@ export default function Home() {
         </section>
 
         {/* Latest Course Section */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-16 sm:py-24 relative overflow-hidden">
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0%_100%,rgba(208,169,51,0.05),transparent_40%)]"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
               <div>
                 <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Teachings</h2>
-                <h3 className="text-4xl sm:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
               </div>
-              <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-lg uppercase tracking-widest">
+              <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-sm sm:text-lg uppercase tracking-widest">
                 Explore All Offerings <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
               </div>
             ) : latestCourse ? (
               <div className="bg-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 flex flex-col lg:flex-row hover:border-[#D0A933]/30 smooth-transition">
-                <div className="lg:w-1/2 relative h-[350px] lg:h-auto overflow-hidden">
+                <div className="lg:w-1/2 relative h-[250px] sm:h-[350px] lg:h-auto overflow-hidden">
                   {latestCourse.thumbnail ? (
                     <img src={latestCourse.thumbnail} alt={latestCourse.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                   ) : (
@@ -248,8 +248,8 @@ export default function Home() {
                     Live Session
                   </div>
                 </div>
-                <div className="lg:w-1/2 p-8 lg:p-16 flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-6">
+                <div className="lg:w-1/2 p-6 sm:p-8 lg:p-16 flex flex-col justify-center">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <span className="text-xs font-bold uppercase text-[#D0A933] bg-[#D0A933]/10 px-4 py-1.5 rounded-full border border-[#D0A933]/20">
                       High Demand
                     </span>
@@ -258,25 +258,25 @@ export default function Home() {
                       {latestCourse.duration}
                     </span>
                   </div>
-                  <h4 className="text-4xl font-serif font-bold mb-6 text-white hover:text-[#D0A933] transition-colors cursor-pointer leading-tight">
+                  <h4 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold mb-4 sm:mb-6 text-white hover:text-[#D0A933] transition-colors cursor-pointer leading-tight">
                     {latestCourse.title}
                   </h4>
-                  <p className="text-lg text-[#E6E6E6] mb-8 line-clamp-3 leading-relaxed">
+                  <p className="text-base sm:text-lg text-[#E6E6E6] mb-6 sm:mb-8 line-clamp-3 leading-relaxed">
                     {latestCourse.description}
                   </p>
-                  <div className="flex flex-wrap items-center gap-8 justify-between">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 sm:justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center font-serif font-bold text-[#D0A933] text-xl border border-white/10">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 flex items-center justify-center font-serif font-bold text-[#D0A933] text-lg sm:text-xl border border-white/10">
                         {latestCourse.title[0]}
                       </div>
                       <div>
                         <p className="text-xs font-bold uppercase text-[#CFE6EA]">Adhyapak</p>
-                        <p className="font-bold text-white">Pathshala Faculty</p>
+                        <p className="font-bold text-white">Paathshala Faculty</p>
                       </div>
                     </div>
                     <Link
                       href={`/courses/${latestCourse.id}`}
-                      className="bg-[#D0A933] text-[#0B0B0B] font-bold px-10 py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-sm"
+                      className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-10 py-3 sm:py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-xs sm:text-sm w-full sm:w-auto"
                     >
                       Enroll in Course
                     </Link>
@@ -292,23 +292,23 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-24 px-4 bg-[#077D93]/5 relative overflow-hidden">
+        <section className="py-16 sm:py-24 px-4 bg-[#077D93]/5 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#D0A933]/5 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#077D93]/5 rounded-full blur-[100px]"></div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-5xl sm:text-7xl font-serif font-bold mb-8 leading-tight text-white">
+            <h2 className="text-3xl sm:text-5xl lg:text-7xl font-serif font-bold mb-6 sm:mb-8 leading-tight text-white">
               Begin Your Path to <br />
               <span className="text-[#D0A933]">Self-Mastery</span>
             </h2>
-            <p className="text-xl text-[#E6E6E6] mb-12 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-[#E6E6E6] mb-8 sm:mb-12 max-w-2xl mx-auto">
               Join a community dedicated to excellence, values, and the pursuit of knowledge.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link href="/courses" className="bg-[#D0A933] text-[#0B0B0B] font-bold px-12 py-5 rounded-xl hover:bg-[#b8952d] smooth-transition text-xl shadow-2xl shadow-[#D0A933]/10 uppercase tracking-widest">
-                Join the Pathshala
+              <Link href="/courses" className="bg-[#D0A933] text-[#0B0B0B] font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-xl hover:bg-[#b8952d] smooth-transition text-base sm:text-xl shadow-2xl shadow-[#D0A933]/10 uppercase tracking-widest">
+                Join the Paathshala
               </Link>
-              <Link href="/about" className="border border-white/20 text-white font-bold px-12 py-5 rounded-xl hover:bg-white/5 smooth-transition text-xl uppercase tracking-widest">
+              <Link href="/about" className="border border-white/20 text-white font-bold px-8 sm:px-12 py-4 sm:py-5 rounded-xl hover:bg-white/5 smooth-transition text-base sm:text-xl uppercase tracking-widest">
                 Talk to a Mentor
               </Link>
             </div>
@@ -317,18 +317,18 @@ export default function Home() {
       </main>
 
       {/* Modern Footer */}
-      <footer className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0B0B0B] border-t border-white/5">
+      <footer className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#0B0B0B] border-t border-white/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
-            <div className="col-span-1 lg:col-span-1">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-16 mb-12 sm:mb-16">
+            <div className="col-span-2 sm:col-span-1 lg:col-span-1">
               <div className="flex items-center gap-4 mb-6">
                 <img
                   src="/logo.png"
-                  alt="Satyakul Pathshala Logo"
+                  alt="Satyakul Paathshala Logo"
                   className="w-8 h-8 object-contain"
                 />
-                <h3 className="text-2xl font-serif font-bold text-white">
-                  <span className="text-[#D0A933]">Satyakul</span> Pathshala
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                  <span className="text-[#D0A933]">Satyakul</span> Paathshala
                 </h3>
               </div>
               <p className="text-[#E6E6E6] leading-relaxed">
@@ -337,37 +337,40 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Nirdeshika</h4>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Explore</h4>
               <ul className="space-y-4 font-medium text-[#CFE6EA]">
-                <li><Link href="/courses" className="hover:text-white transition-colors">Course Catalog</Link></li>
-                <li><Link href="/" className="hover:text-white transition-colors">Success Stories</Link></li>
+                <li><Link href="/courses" className="hover:text-white transition-colors">All Courses</Link></li>
+                <li><Link href="/our-story" className="hover:text-white transition-colors">Our Story</Link></li>
                 <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Sanstha</h4>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Legal</h4>
               <ul className="space-y-4 font-medium text-[#CFE6EA]">
-                <li><Link href="/about" className="hover:text-white transition-colors">Our Vision</Link></li>
-                <li><Link href="/" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/" className="hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Anusaran</h4>
+              <h4 className="font-bold text-[#D0A933] mb-6 uppercase tracking-[0.2em] text-[10px]">Connect</h4>
               <div className="flex gap-4">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#D0A933]/50 cursor-pointer transition-all">
-                    <div className="w-5 h-5 bg-white/20" />
-                  </div>
-                ))}
+                <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#D0A933]/50 hover:bg-white/10 cursor-pointer transition-all">
+                  <Facebook className="w-5 h-5 text-[#CFE6EA]" suppressHydrationWarning />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#D0A933]/50 hover:bg-white/10 cursor-pointer transition-all">
+                  <Youtube className="w-5 h-5 text-[#CFE6EA]" suppressHydrationWarning />
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center hover:border-[#D0A933]/50 hover:bg-white/10 cursor-pointer transition-all">
+                  <Instagram className="w-5 h-5 text-[#CFE6EA]" suppressHydrationWarning />
+                </a>
               </div>
             </div>
           </div>
 
           <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted-foreground">
-            <p>© 2026 Satyakul Pathshala. All rights reserved.</p>
+            <p>© 2026 Satyakul Paathshala. All rights reserved.</p>
             <div className="flex items-center gap-8">
               <a
                 href="https://jiroshi.com/"

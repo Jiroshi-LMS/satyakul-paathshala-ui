@@ -10,7 +10,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Satyakul Pathshala - Shaping Minds with Discipline",
+  title: "Satyakul Paathshala - Shaping Minds with Discipline",
   description: "Discover and enroll in world-class online courses. Learn at your own pace with expert instructors and join thousands of students achieving their goals.",
   icons: {
     icon: "/logo.png",
