@@ -7,6 +7,8 @@ import { toast } from 'sonner';
 import { signup, checkIdentifierAvailability } from '@/lib/api/auth';
 import { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import Navbar from '@/components/Navbar';
+import { Mail, Lock, ArrowRight, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
 
 export default function SignupPage() {
     const router = useRouter();
@@ -81,7 +83,6 @@ export default function SignupPage() {
             if (response.status && response.data?.access_token) {
                 contextLogin(response.data.access_token);
                 toast.success('Account created successfully!');
-                // Success - Redirect to home
                 router.push('/');
             } else {
                 const msg = response.message || 'Signup failed';
@@ -89,7 +90,6 @@ export default function SignupPage() {
                 toast.error(msg);
             }
         } catch (err: any) {
-            // Try to extract error message from API error response if available
             const msg = err.response?.data?.message || 'Something went wrong. Please try again.';
             setError(msg);
             toast.error(msg);
@@ -99,126 +99,198 @@ export default function SignupPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-            <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <Link href="/">
-                    <h2 className="text-center text-3xl font-extrabold gradient-text">
-                        LearnHub
-                    </h2>
-                </Link>
-                <h2 className="mt-6 text-center text-3xl font-bold text-foreground">
-                    Create your account
-                </h2>
-                <p className="mt-2 text-center text-sm text-[var(--muted-foreground)]">
-                    Or{' '}
-                    <Link href="/login" className="font-medium text-[var(--primary)] hover:text-[var(--primary)]/80 smooth-transition">
-                        sign in to your existing account
-                    </Link>
-                </p>
+        <div className="min-h-screen bg-transparent text-white">
+            <Navbar />
+
+            {/* Background Atmosphere */}
+            <div className="fixed inset-0 pointer-events-none -z-10">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D0A933]/5 rounded-full blur-[120px] translate-x-1/3 -translate-y-1/3"></div>
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#077D93]/10 rounded-full blur-[100px] -translate-x-1/3 translate-y-1/3"></div>
             </div>
 
-            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-[var(--card)] py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-[var(--border)]">
-                    <form className="space-y-6" onSubmit={handleSubmit}>
-                        {error && (
-                            <div className="bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-900 rounded-md p-4">
-                                <div className="flex">
-                                    <div className="flex-shrink-0">
-                                        <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                        </svg>
-                                    </div>
-                                    <div className="ml-3">
-                                        <p className="text-sm text-red-700 dark:text-red-200">{error}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+            <main className="flex items-center justify-center min-h-[calc(100vh-5rem)] pt-24 sm:pt-28 pb-12 px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-md">
+                    {/* Logo & Header */}
+                    <div className="text-center mb-8">
+                        <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
+                            <img
+                                src="/logo.png"
+                                alt="Satyakul Paathshala Logo"
+                                className="w-12 h-12 sm:w-14 sm:h-14 object-contain group-hover:scale-105 transition-transform"
+                            />
+                            <h1 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight">
+                                <span className="text-[#D0A933]">Satyakul</span>
+                                <span className="text-white ml-1">Paathshala</span>
+                            </h1>
+                        </Link>
+                        <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-2">
+                            Begin Your Journey
+                        </h2>
+                        <p className="text-[#E6E6E6]/70 text-sm sm:text-base">
+                            Create your account to access our courses
+                        </p>
+                    </div>
 
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-foreground">
-                                Email address
-                            </label>
-                            <div className="mt-1 relative">
-                                <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    autoComplete="email"
-                                    required
-                                    value={identifier}
-                                    onChange={(e) => setIdentifier(e.target.value)}
-                                    className={`appearance-none block w-full px-3 py-2 border ${isIdentifierTaken ? 'border-red-500' : 'border-[var(--border)]'} rounded-md shadow-sm placeholder-[var(--muted-foreground)] focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm bg-background pr-10`}
-                                />
-                                {isCheckingIdentifier && (
-                                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                        <svg className="animate-spin h-4 w-4 text-[var(--muted-foreground)]" fill="none" viewBox="0 0 24 24">
-                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                        </svg>
+                    {/* Form Card */}
+                    <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl">
+                        <form className="space-y-5" onSubmit={handleSubmit}>
+                            {/* Error Message */}
+                            {error && (
+                                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-start gap-3">
+                                    <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                                    <p className="text-sm text-red-400">{error}</p>
+                                </div>
+                            )}
+
+                            {/* Email Field */}
+                            <div>
+                                <label htmlFor="email" className="block text-sm font-bold text-white/80 uppercase tracking-wider mb-2">
+                                    Email Address
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Mail className="w-5 h-5 text-white/40" />
                                     </div>
+                                    <input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        autoComplete="email"
+                                        required
+                                        value={identifier}
+                                        onChange={(e) => setIdentifier(e.target.value)}
+                                        className={`w-full pl-12 pr-10 py-3.5 bg-white/5 border ${isIdentifierTaken ? 'border-red-500/50' : 'border-white/10'} rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#D0A933]/50 focus:border-[#D0A933] transition-all text-sm sm:text-base`}
+                                        placeholder="your.email@example.com"
+                                    />
+                                    {isCheckingIdentifier && (
+                                        <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                            <Loader2 className="w-5 h-5 text-[#D0A933] animate-spin" />
+                                        </div>
+                                    )}
+                                    {!isCheckingIdentifier && identifier && !isIdentifierTaken && (
+                                        <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+                                            <CheckCircle2 className="w-5 h-5 text-green-400" />
+                                        </div>
+                                    )}
+                                </div>
+                                {isIdentifierTaken && (
+                                    <p className="mt-2 text-xs text-red-400 flex items-center gap-1.5">
+                                        <XCircle className="w-3.5 h-3.5" />
+                                        This email is already in use
+                                    </p>
                                 )}
                             </div>
-                            {isIdentifierTaken && (
-                                <p className="mt-1 text-xs text-red-500">This email is already in use.</p>
-                            )}
-                        </div>
 
-
-                        <div>
-                            <label htmlFor="password" className="block text-sm font-medium text-foreground">
-                                Password
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    autoComplete="new-password"
-                                    required
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="appearance-none block w-full px-3 py-2 border border-[var(--border)] rounded-md shadow-sm placeholder-[var(--muted-foreground)] focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm bg-background"
-                                />
+                            {/* Password Field */}
+                            <div>
+                                <label htmlFor="password" className="block text-sm font-bold text-white/80 uppercase tracking-wider mb-2">
+                                    Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Lock className="w-5 h-5 text-white/40" />
+                                    </div>
+                                    <input
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        autoComplete="new-password"
+                                        required
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#D0A933]/50 focus:border-[#D0A933] transition-all text-sm sm:text-base"
+                                        placeholder="••••••••"
+                                    />
+                                </div>
+                                {password && password.length < 6 && (
+                                    <p className="mt-2 text-xs text-white/50">Password must be at least 6 characters</p>
+                                )}
                             </div>
-                        </div>
 
-                        <div>
-                            <label htmlFor="confirmPassword" className="block text-sm font-medium text-foreground">
-                                Confirm Password
-                            </label>
-                            <div className="mt-1">
-                                <input
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    type="password"
-                                    autoComplete="new-password"
-                                    required
-                                    value={confirmPassword}
-                                    onChange={(e) => setConfirmPassword(e.target.value)}
-                                    className="appearance-none block w-full px-3 py-2 border border-[var(--border)] rounded-md shadow-sm placeholder-[var(--muted-foreground)] focus:outline-none focus:ring-[var(--primary)] focus:border-[var(--primary)] sm:text-sm bg-background"
-                                />
+                            {/* Confirm Password Field */}
+                            <div>
+                                <label htmlFor="confirmPassword" className="block text-sm font-bold text-white/80 uppercase tracking-wider mb-2">
+                                    Confirm Password
+                                </label>
+                                <div className="relative">
+                                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                        <Lock className="w-5 h-5 text-white/40" />
+                                    </div>
+                                    <input
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        type="password"
+                                        autoComplete="new-password"
+                                        required
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#D0A933]/50 focus:border-[#D0A933] transition-all text-sm sm:text-base"
+                                        placeholder="••••••••"
+                                    />
+                                </div>
+                                {confirmPassword && password !== confirmPassword && (
+                                    <p className="mt-2 text-xs text-red-400 flex items-center gap-1.5">
+                                        <XCircle className="w-3.5 h-3.5" />
+                                        Passwords do not match
+                                    </p>
+                                )}
+                                {confirmPassword && password === confirmPassword && password.length >= 6 && (
+                                    <p className="mt-2 text-xs text-green-400 flex items-center gap-1.5">
+                                        <CheckCircle2 className="w-3.5 h-3.5" />
+                                        Passwords match
+                                    </p>
+                                )}
                             </div>
-                        </div>
 
-                        <div>
+                            {/* Terms & Privacy */}
+                            <div className="pt-2">
+                                <p className="text-xs text-white/50 text-center leading-relaxed">
+                                    By signing up, you agree to our{' '}
+                                    <Link href="/terms" className="text-[#D0A933] hover:text-[#D0A933]/80 hover:underline font-medium transition-colors">
+                                        Terms and Conditions
+                                    </Link>
+                                    {' '}and{' '}
+                                    <Link href="/privacy" className="text-[#D0A933] hover:text-[#D0A933]/80 hover:underline font-medium transition-colors">
+                                        Privacy Policy
+                                    </Link>
+                                </p>
+                            </div>
+
+                            {/* Submit Button */}
                             <button
                                 type="submit"
-                                disabled={loading || isIdentifierTaken || isCheckingIdentifier}
-                                className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white gradient-bg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary)] disabled:opacity-50 disabled:cursor-not-allowed smooth-transition"
+                                disabled={loading || isIdentifierTaken || isCheckingIdentifier || password !== confirmPassword || password.length < 6}
+                                className="w-full group relative overflow-hidden bg-gradient-to-r from-[#D0A933] to-[#b8952d] text-[#0B0B0B] font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-[#D0A933]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 text-sm sm:text-base uppercase tracking-widest"
                             >
-                                {loading ? (
-                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                ) : null}
-                                {loading ? 'Creating account...' : 'Sign up'}
+                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                                <span className="relative flex items-center justify-center gap-2">
+                                    {loading ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" />
+                                            Creating account...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Sign Up
+                                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                        </>
+                                    )}
+                                </span>
                             </button>
+                        </form>
+
+                        {/* Sign In Link */}
+                        <div className="mt-6 pt-6 border-t border-white/10 text-center">
+                            <p className="text-sm text-white/60">
+                                Already have an account?{' '}
+                                <Link href="/login" className="text-[#D0A933] hover:text-white font-bold hover:underline transition-colors">
+                                    Sign In
+                                </Link>
+                            </p>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </main>
         </div>
     );
 }
