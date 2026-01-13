@@ -269,7 +269,7 @@ export default function Home() {
                     {latestCourse.description}
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 sm:justify-between">
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                       <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 flex items-center justify-center font-serif font-bold text-[#D0A933] text-lg sm:text-xl border border-white/10">
                         {latestCourse.title[0]}
                       </div>
@@ -277,7 +277,7 @@ export default function Home() {
                         <p className="text-xs font-bold uppercase text-[#CFE6EA]">Adhyapak</p>
                         <p className="font-bold text-white">Paathshala Faculty</p>
                       </div>
-                    </div>
+                    </div> */}
                     <Link
                       href={`/courses/${latestCourse.id}`}
                       className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-10 py-3 sm:py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-xs sm:text-sm w-full sm:w-auto"

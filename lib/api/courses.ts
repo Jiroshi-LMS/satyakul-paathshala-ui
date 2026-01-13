@@ -126,7 +126,7 @@ export const getCourseById = async (id: string | number): Promise<Course> => {
 export const getCourseLessons = async (courseId: string | number, page: number = 1): Promise<LessonsResponse> => {
     try {
         const response = await apiClient.get<ApiLessonsResponse>(`/courses/${courseId}/lessons/`, {
-            params: { pagination: 'page', page, selections: 'uuid,title,description,duration,created_at' }
+            params: { pagination: 'page', page, selections: 'uuid,title,description,duration,created_at'}
         });
 
         if (!response.data.status) {

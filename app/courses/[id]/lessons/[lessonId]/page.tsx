@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import { getCourseLessons, getLessonById, getLessonResources, formatFileSize } from '@/lib/api/courses';
 import type { Lesson, LessonDetail, LessonResourcesData } from '@/types/course';
@@ -12,16 +12,73 @@ import { toast } from 'sonner';
 export default function LessonPage() {
     const params = useParams();
     const router = useRouter();
+    const searchParams = useSearchParams();
     const { user, loading: authLoading } = useAuth();
 
     const courseId = params?.id as string;
     const lessonId = params?.lessonId as string;
+
+    // Get initial page from URL search params
+    const initialPage = parseInt(searchParams.get('syllabusPage') || '1', 10);
 
     const [lesson, setLesson] = useState<LessonDetail | null>(null);
     const [lessons, setLessons] = useState<Lesson[]>([]);
     const [resources, setResources] = useState<LessonResourcesData | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+
+    // Pagination state for lessons sidebar
+    const [lessonsPage, setLessonsPage] = useState(initialPage);
+    const [lessonsTotalPages, setLessonsTotalPages] = useState(1);
+    const [lessonsTotalCount, setLessonsTotalCount] = useState(0);
+    const [lessonsLoading, setLessonsLoading] = useState(false);
+
+    // Update URL with new page (without full navigation)
+    const updateUrlWithPage = (page: number) => {
+        const newParams = new URLSearchParams(searchParams.toString());
+        if (page === 1) {
+            newParams.delete('syllabusPage');
+        } else {
+            newParams.set('syllabusPage', page.toString());
+        }
+        const newUrl = `${window.location.pathname}${newParams.toString() ? `?${newParams.toString()}` : ''}`;
+        window.history.replaceState({}, '', newUrl);
+    };
+
+    // Fetch lessons for sidebar (can be called independently for pagination)
+    const fetchLessons = async (page: number = 1, updateUrl: boolean = true) => {
+        if (!courseId) return;
+        try {
+            setLessonsLoading(true);
+            const lessonsData = await getCourseLessons(courseId, page);
+            setLessons(lessonsData.lessons);
+            setLessonsPage(lessonsData.currentPage);
+            setLessonsTotalPages(lessonsData.totalPages);
+            setLessonsTotalCount(lessonsData.count);
+            
+            // Update URL to persist the page state
+            if (updateUrl) {
+                updateUrlWithPage(lessonsData.currentPage);
+            }
+        } catch (err) {
+            toast.error('Failed to load lessons list.');
+        } finally {
+            setLessonsLoading(false);
+        }
+    };
+
+    // Handle pagination for lessons sidebar
+    const handleLessonsPageChange = (newPage: number) => {
+        if (newPage >= 1 && newPage <= lessonsTotalPages && !lessonsLoading) {
+            fetchLessons(newPage);
+        }
+    };
+
+    // Generate lesson link with preserved pagination
+    const getLessonLink = (lessonItemId: string) => {
+        const basePath = `/courses/${courseId}/lessons/${lessonItemId}`;
+        return lessonsPage > 1 ? `${basePath}?syllabusPage=${lessonsPage}` : basePath;
+    };
 
     useEffect(() => {
         if (!authLoading && !user) {
@@ -37,16 +94,28 @@ export default function LessonPage() {
                 setLoading(true);
                 setError(null);
 
-                // Fetch current lesson, course syllabus, and resources in parallel
-                const [lessonData, lessonsList, resourcesData] = await Promise.all([
+                // Get page from URL, default to 1
+                const pageFromUrl = parseInt(searchParams.get('syllabusPage') || '1', 10);
+                const requestedPage = pageFromUrl > 0 ? pageFromUrl : 1;
+
+                // Fetch current lesson, lessons page, and resources in parallel
+                const [lessonData, lessonsData, resourcesData] = await Promise.all([
                     getLessonById(courseId, lessonId),
-                    getCourseLessons(courseId),
+                    getCourseLessons(courseId, requestedPage),
                     getLessonResources(courseId, lessonId)
                 ]);
 
                 setLesson(lessonData);
-                setLessons(lessonsList);
+                setLessons(lessonsData.lessons);
+                setLessonsPage(lessonsData.currentPage);
+                setLessonsTotalPages(lessonsData.totalPages);
+                setLessonsTotalCount(lessonsData.count);
                 setResources(resourcesData);
+                
+                // If requested page was out of bounds, the API returns page 1, so update URL
+                if (requestedPage !== lessonsData.currentPage) {
+                    updateUrlWithPage(lessonsData.currentPage);
+                }
             } catch (err: any) {
                 toast.error('Failed to load lesson. Please try again.');
                 setError(err.message || 'Failed to load lesson. Please try again.');
@@ -108,18 +177,27 @@ export default function LessonPage() {
                             Back to Course
                         </Link>
                         <h2 className="font-bold text-lg">Course Syllabus</h2>
-                        <p className="text-xs text-[var(--muted-foreground)]">{lessons.length} Lessons</p>
+                        <p className="text-xs text-[var(--muted-foreground)]">{lessonsTotalCount} Lessons</p>
                     </div>
 
-                    <div className="flex-1">
-                        {lessons.map((item, index) => (
+                    <div className="flex-1 relative">
+                        {/* Loading overlay for pagination */}
+                        {lessonsLoading && (
+                            <div className="absolute inset-0 bg-[var(--card)]/80 backdrop-blur-sm z-10 flex items-center justify-center">
+                                <div className="w-6 h-6 border-2 border-[var(--primary)] border-t-transparent rounded-full animate-spin" />
+                            </div>
+                        )}
+
+                        {lessons.map((item) => (
                             <Link
                                 key={item.id}
-                                href={`/courses/${courseId}/lessons/${item.id}`}
+                                href={getLessonLink(item.id)}
                                 className={`flex items-start gap-3 p-4 border-b border-[var(--border)] hover:bg-[var(--primary)]/5 smooth-transition group ${item.id === lessonId ? 'bg-[var(--primary)]/10 border-l-4 border-l-[var(--primary)]' : ''}`}
                             >
-                                <div className={`flex items-center justify-center w-8 h-8 rounded-full shrink-0 text-sm font-bold ${item.id === lessonId ? 'bg-[var(--primary)] text-white' : 'bg-[var(--muted)] text-[var(--muted-foreground)] group-hover:bg-[var(--primary)]/20'}`}>
-                                    {index + 1}
+                                <div className={`flex items-center justify-center w-8 h-8 rounded-full shrink-0 ${item.id === lessonId ? 'bg-[var(--primary)] text-white' : 'bg-[var(--muted)] text-[var(--muted-foreground)] group-hover:bg-[var(--primary)]/20'}`}>
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                    </svg>
                                 </div>
                                 <div className="min-w-0">
                                     <h3 className={`text-sm font-medium leading-tight truncate ${item.id === lessonId ? 'text-[var(--primary)]' : 'text-foreground'}`}>
@@ -130,6 +208,39 @@ export default function LessonPage() {
                             </Link>
                         ))}
                     </div>
+
+                    {/* Pagination Controls */}
+                    {lessonsTotalPages > 1 && (
+                        <div className="p-4 border-t border-[var(--border)] bg-background/50 backdrop-blur-sm sticky bottom-0">
+                            <div className="flex items-center justify-between gap-2">
+                                <button
+                                    onClick={() => handleLessonsPageChange(lessonsPage - 1)}
+                                    disabled={lessonsPage === 1 || lessonsLoading}
+                                    className="flex items-center justify-center w-8 h-8 rounded-lg text-[var(--muted-foreground)] hover:text-foreground hover:bg-[var(--muted)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                    aria-label="Previous page"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+
+                                <span className="text-xs font-medium text-[var(--muted-foreground)]">
+                                    Page {lessonsPage} of {lessonsTotalPages}
+                                </span>
+
+                                <button
+                                    onClick={() => handleLessonsPageChange(lessonsPage + 1)}
+                                    disabled={lessonsPage === lessonsTotalPages || lessonsLoading}
+                                    className="flex items-center justify-center w-8 h-8 rounded-lg text-[var(--muted-foreground)] hover:text-foreground hover:bg-[var(--muted)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                    aria-label="Next page"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </aside>
 
                 {/* Main Content - Right */}
@@ -281,29 +392,71 @@ export default function LessonPage() {
                             </div>
 
                             <div className="pt-8 mt-12 border-t border-[var(--border)] lg:hidden">
-                                <h2 className="text-xl font-bold mb-6">Other Lessons</h2>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    {lessons.filter(l => l.id !== lessonId).slice(0, 4).map((item) => (
+                                <div className="flex items-center justify-between mb-6">
+                                    <h2 className="text-xl font-bold">Course Lessons</h2>
+                                    <span className="text-xs text-[var(--muted-foreground)]">{lessonsTotalCount} total</span>
+                                </div>
+
+                                {/* Mobile Lessons List */}
+                                <div className="space-y-3 relative">
+                                    {lessonsLoading && (
+                                        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-10 flex items-center justify-center rounded-2xl">
+                                            <div className="w-6 h-6 border-2 border-[var(--primary)] border-t-transparent rounded-full animate-spin" />
+                                        </div>
+                                    )}
+                                    {lessons.map((item) => (
                                         <Link
                                             key={item.id}
-                                            href={`/courses/${courseId}/lessons/${item.id}`}
-                                            className="flex items-center gap-4 p-4 bg-[var(--card)] border border-[var(--border)] rounded-2xl hover:border-[var(--primary)] smooth-transition"
+                                            href={getLessonLink(item.id)}
+                                            className={`flex items-center gap-4 p-4 bg-[var(--card)] border rounded-2xl smooth-transition ${item.id === lessonId ? 'border-[var(--primary)] bg-[var(--primary)]/10' : 'border-[var(--border)] hover:border-[var(--primary)]'}`}
                                         >
-                                            <div className="w-10 h-10 rounded-full bg-[var(--muted)] flex items-center justify-center font-bold text-[var(--muted-foreground)] shrink-0">
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${item.id === lessonId ? 'bg-[var(--primary)] text-white' : 'bg-[var(--muted)] text-[var(--muted-foreground)]'}`}>
                                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                                 </svg>
                                             </div>
-                                            <div className="min-w-0">
-                                                <h4 className="font-medium text-foreground truncate">{item.title}</h4>
+                                            <div className="min-w-0 flex-1">
+                                                <h4 className={`font-medium truncate ${item.id === lessonId ? 'text-[var(--primary)]' : 'text-foreground'}`}>{item.title}</h4>
                                                 <p className="text-xs text-[var(--muted-foreground)]">{item.duration}</p>
                                             </div>
                                         </Link>
                                     ))}
                                 </div>
-                                <div className="mt-8">
-                                    <Link href={`/courses/${courseId}`} className="block w-full text-center py-4 bg-[var(--muted)] rounded-2xl font-bold text-foreground">
-                                        View Full Syllabus
+
+                                {/* Mobile Pagination Controls */}
+                                {lessonsTotalPages > 1 && (
+                                    <div className="mt-6 flex items-center justify-between gap-4 p-4 bg-[var(--card)] border border-[var(--border)] rounded-2xl">
+                                        <button
+                                            onClick={() => handleLessonsPageChange(lessonsPage - 1)}
+                                            disabled={lessonsPage === 1 || lessonsLoading}
+                                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-[var(--muted-foreground)] hover:text-foreground hover:bg-[var(--muted)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                        >
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                            Prev
+                                        </button>
+
+                                        <span className="text-sm font-medium text-[var(--muted-foreground)]">
+                                            {lessonsPage} / {lessonsTotalPages}
+                                        </span>
+
+                                        <button
+                                            onClick={() => handleLessonsPageChange(lessonsPage + 1)}
+                                            disabled={lessonsPage === lessonsTotalPages || lessonsLoading}
+                                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-[var(--muted-foreground)] hover:text-foreground hover:bg-[var(--muted)] disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                                        >
+                                            Next
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                )}
+
+                                <div className="mt-6">
+                                    <Link href={`/courses/${courseId}`} className="block w-full text-center py-4 bg-[var(--muted)] rounded-2xl font-bold text-foreground hover:bg-[var(--muted)]/80 transition-colors">
+                                        Back to Course Details
                                     </Link>
                                 </div>
                             </div>
