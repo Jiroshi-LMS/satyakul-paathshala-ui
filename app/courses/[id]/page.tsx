@@ -77,7 +77,7 @@ export default function CourseDetailsPage() {
             const success = await enrollInCourse(courseId);
             if (success) {
                 toast.success('Enrollment successful!');
-                fetchData();
+                window.location.reload();
             } else {
                 toast.error('Enrollment failed.');
             }
