@@ -14,13 +14,12 @@ export default function Home() {
   useEffect(() => {
     const fetchLatestCourse = async () => {
       try {
-        setLoading(true);
         const response = await getCourses();
         if (response.courses.length > 0) {
           setLatestCourse(response.courses[0]);
         }
       } catch (err) {
-        console.error('Failed to fetch latest course:', err);
+        // Silent fail
       } finally {
         setLoading(false);
       }
@@ -220,25 +219,21 @@ export default function Home() {
         </section>
 
         {/* Latest Course Section */}
-        <section className="py-16 sm:py-24 relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0%_100%,rgba(208,169,51,0.05),transparent_40%)]"></div>
+        {!loading && latestCourse && (
+          <section className="py-16 sm:py-24 relative overflow-hidden">
+            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0%_100%,rgba(208,169,51,0.05),transparent_40%)]"></div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
-              <div>
-                <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Lessons</h2>
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
+                <div>
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Lessons</h2>
+                  <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
+                </div>
+                <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-sm sm:text-lg uppercase tracking-widest">
+                  Explore All Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
               </div>
-              <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-sm sm:text-lg uppercase tracking-widest">
-                Explore All Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </Link>
-            </div>
 
-            {loading ? (
-              <div className="w-full h-[400px] bg-card/30 rounded-3xl animate-pulse flex items-center justify-center border border-border">
-                <span className="text-muted-foreground font-medium">Preparing curriculum...</span>
-              </div>
-            ) : latestCourse ? (
               <div className="bg-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 flex flex-col lg:flex-row hover:border-[#D0A933]/30 smooth-transition">
                 <div className="lg:w-1/2 relative h-[250px] sm:h-[350px] lg:h-auto overflow-hidden">
                   {latestCourse.thumbnail ? (
@@ -269,15 +264,6 @@ export default function Home() {
                     {latestCourse.description}
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 sm:justify-between">
-                    {/* <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 flex items-center justify-center font-serif font-bold text-[#D0A933] text-lg sm:text-xl border border-white/10">
-                        {latestCourse.title[0]}
-                      </div>
-                      <div>
-                        <p className="text-xs font-bold uppercase text-[#CFE6EA]">Adhyapak</p>
-                        <p className="font-bold text-white">Paathshala Faculty</p>
-                      </div>
-                    </div> */}
                     <Link
                       href={`/courses/${latestCourse.id}`}
                       className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-10 py-3 sm:py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-xs sm:text-sm w-full sm:w-auto"
@@ -287,13 +273,9 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            ) : (
-              <div className="text-center py-20 bg-card/30 rounded-3xl border border-dashed border-border group hover:border-[#D0A933]/50 smooth-transition">
-                <p className="text-muted-foreground text-lg italic">Wait with patience. New wisdom is being prepared.</p>
-              </div>
-            )}
-          </div>
-        </section>
+            </div>
+          </section>
+        )}
 
         {/* Call to Action */}
         <section className="py-16 sm:py-24 px-4 bg-[#077D93]/5 relative overflow-hidden">
