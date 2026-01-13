@@ -2,26 +2,10 @@ export interface Course {
     id: string | number;
     title: string;
     description: string;
-    instructor?: {
-        id: string | number;
-        name: string;
-        avatar?: string;
-    };
-    instructorName?: string;
-    price: number;
-    currency?: string;
     thumbnail?: string;
-    category?: string;
     duration?: number | string;
-    level?: 'Beginner' | 'Intermediate' | 'Advanced';
-    rating?: number;
-    studentsCount?: number;
     lessons?: number;
     createdAt?: string;
-    updatedAt?: string;
-    tags?: string[];
-    isPublished?: boolean;
-    isFeatured?: boolean;
     isEnrolled?: boolean;
 }
 
@@ -83,12 +67,14 @@ export interface ApiLessonsResponse {
     results: boolean;
     message: string;
     data: {
-        count: number;
-        total_pages: number;
-        current_page: number;
-        next: string | null;
-        previous: string | null;
         results: ApiLessonItem[];
+        pagination: {
+            count: number;
+            total_pages: number;
+            current_page: number;
+            next: string | null;
+            previous: string | null;
+        };
     };
     error_code: string | null;
 }
@@ -178,4 +164,13 @@ export interface EnrolledCoursesResponse {
     count: number;
     totalPages: number;
     currentPage: number;
+}
+
+export interface LessonsResponse {
+    lessons: Lesson[];
+    count: number;
+    totalPages: number;
+    currentPage: number;
+    next: string | null;
+    previous: string | null;
 }

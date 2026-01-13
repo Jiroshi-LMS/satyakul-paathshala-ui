@@ -1,6 +1,6 @@
 import apiClient from './axios';
 import { toast } from 'sonner';
-import type { Course, ApiCoursesResponse, ApiCourseItem, CoursesResponse, ApiCourseDetailResponse, ApiLessonsResponse, Lesson, ApiLessonItem, LessonDetail, ApiLessonDetailResponse, LessonResourcesData, ApiLessonResourcesResponse, EnrolledCoursesResponse, ApiEnrolledCoursesResponse } from '@/types/course';
+import type { Course, ApiCoursesResponse, ApiCourseItem, CoursesResponse, ApiCourseDetailResponse, ApiLessonsResponse, Lesson, LessonsResponse, ApiLessonItem, LessonDetail, ApiLessonDetailResponse, LessonResourcesData, ApiLessonResourcesResponse, EnrolledCoursesResponse, ApiEnrolledCoursesResponse } from '@/types/course';
 
 /**
  * Helper to format file size bytes to string
@@ -41,7 +41,7 @@ const mapApiCourse = (apiCourse: ApiCourseItem): Course => {
         duration: formatDuration(apiCourse.duration),
         createdAt: apiCourse.created_at,
         isEnrolled: apiCourse.is_enrolled,
-        price: 0, // Default price, update if your API provides it
+        // price: 0, // Removed as per type definition
     };
 };
 
@@ -123,23 +123,47 @@ export const getCourseById = async (id: string | number): Promise<Course> => {
 /**
  * Fetch lessons for a specific course
  */
-export const getCourseLessons = async (courseId: string | number): Promise<Lesson[]> => {
+export const getCourseLessons = async (courseId: string | number, page: number = 1): Promise<LessonsResponse> => {
     try {
         const response = await apiClient.get<ApiLessonsResponse>(`/courses/${courseId}/lessons/`, {
-            params: { pagination: 'page', selections: 'uuid,title,description,duration' }
+            params: { pagination: 'page', page, selections: 'uuid,title,description,duration,created_at' }
         });
 
         if (!response.data.status) {
             toast.error('Failed to fetch lessons: API returned error status');
-            return [];
+            return {
+                lessons: [],
+                count: 0,
+                totalPages: 0,
+                currentPage: 1,
+                next: null,
+                previous: null
+            };
         }
 
-        const apiLessons = response.data.data?.results || [];
-        return apiLessons.map(mapApiLesson);
+        const data = response.data.data;
+        const apiLessons = data?.results || [];
+        const pagination = data?.pagination;
+
+        return {
+            lessons: apiLessons.map(mapApiLesson),
+            count: pagination?.count || 0,
+            totalPages: pagination?.total_pages || 0,
+            currentPage: pagination?.current_page || 1,
+            next: pagination?.next || null,
+            previous: pagination?.previous || null
+        };
 
     } catch {
         toast.error('Failed to fetch lessons. Please try again.');
-        return [];
+        return {
+            lessons: [],
+            count: 0,
+            totalPages: 0,
+            currentPage: 1,
+            next: null,
+            previous: null
+        };
     }
 };
 
