@@ -49,7 +49,7 @@ export default function PrivacyPolicyPage() {
                             </div>
                             <div>
                                 <h2 className="text-xl font-bold text-[#077D93] mb-3 uppercase tracking-wide">
-                                    🔒 Our Privacy Commitment
+                                    Our Privacy Commitment
                                 </h2>
                                 <p className="text-white leading-relaxed mb-4">
                                     <strong>We do NOT share, sell, or disclose student information to any third party.</strong>
@@ -76,7 +76,6 @@ export default function PrivacyPolicyPage() {
                                 We collect information that you provide directly to us when you:
                             </p>
                             <ul className="text-[#E6E6E6] space-y-3 list-disc list-inside">
-                                <li><strong className="text-white">Register or enroll</strong> — Name, date of birth, contact details, address, and parent/guardian information</li>
                                 <li><strong className="text-white">Create an account</strong> — Email address, phone number, and login credentials</li>
                                 <li><strong className="text-white">Attend courses</strong> — Academic records, attendance, and performance data</li>
                                 <li><strong className="text-white">Contact us</strong> — Any information you provide in enquiries or feedback</li>
@@ -236,7 +235,7 @@ export default function PrivacyPolicyPage() {
                             </p>
                             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                                 <p className="text-white font-semibold">Satyakul Paathshala</p>
-                                <p className="text-[#CFE6EA] text-sm">Email: privacy@satyakulpathshala.com</p>
+                                <p className="text-[#CFE6EA] text-sm">Email: satyakulclasses@gmail.com</p>
                                 <p className="text-[#CFE6EA] text-sm">You may also visit us at our physical premises during office hours.</p>
                             </div>
                         </section>

@@ -88,7 +88,6 @@ export default function TermsAndConditionsPage() {
                                 <li>Enrollment in any course is subject to availability and eligibility criteria.</li>
                                 <li>All admission decisions are at the sole discretion of Satyakul Paathshala.</li>
                                 <li>Students must provide accurate and complete information during registration.</li>
-                                <li>Parents/guardians must consent to enrollment for students under 18 years of age.</li>
                                 <li>We reserve the right to cancel or modify course offerings without prior notice.</li>
                             </ul>
                         </section>
@@ -101,7 +100,6 @@ export default function TermsAndConditionsPage() {
                             <ul className="text-[#E6E6E6] space-y-3 list-disc list-inside">
                                 <li><strong className="text-white">All payments are accepted OFFLINE ONLY</strong> — at our physical premises via cash, cheque, or direct bank transfer.</li>
                                 <li>Course fees must be paid in full or as per agreed installment plans before the commencement of classes.</li>
-                                <li>Fee receipts will be issued only upon payment confirmation.</li>
                                 <li>Any fee revision will be communicated in advance and will apply to new enrollments only.</li>
                                 <li>We do not accept payments through any third-party agents or unauthorized persons.</li>
                             </ul>
@@ -114,9 +112,7 @@ export default function TermsAndConditionsPage() {
                             </h2>
                             <ul className="text-[#E6E6E6] space-y-3 list-disc list-inside">
                                 <li>Refund requests must be submitted in writing within 7 days of enrollment.</li>
-                                <li>A processing fee of up to 20% may be deducted from refunds.</li>
                                 <li>No refunds will be provided after the course has commenced or after 7 days from enrollment, whichever is earlier.</li>
-                                <li>Refunds, if approved, will be processed within 15-30 business days.</li>
                                 <li>Course materials, once issued, are non-refundable.</li>
                             </ul>
                         </section>
@@ -130,8 +126,6 @@ export default function TermsAndConditionsPage() {
                                 <li>Students are expected to maintain discipline, respect, and decorum at all times.</li>
                                 <li>Any form of misconduct, harassment, or disruptive behavior will not be tolerated.</li>
                                 <li>The institute reserves the right to suspend or expel students for violations without refund.</li>
-                                <li>Students must attend classes regularly and maintain minimum attendance requirements.</li>
-                                <li>Use of mobile phones during classes is strictly prohibited unless authorized.</li>
                             </ul>
                         </section>
 
@@ -204,7 +198,7 @@ export default function TermsAndConditionsPage() {
                             </p>
                             <div className="bg-white/5 rounded-xl p-4 border border-white/10">
                                 <p className="text-white font-semibold">Satyakul Paathshala</p>
-                                <p className="text-[#CFE6EA] text-sm">Email: contact@satyakulpathshala.com</p>
+                                <p className="text-[#CFE6EA] text-sm">Email: satyakulclasses@gmail.com</p>
                                 <p className="text-[#CFE6EA] text-sm">Visit us at our physical premises for any payment-related queries.</p>
                             </div>
                         </section>
