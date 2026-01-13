@@ -40,11 +40,11 @@ export default function Home() {
           <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(7,125,147,0.1),transparent_50%)]"></div>
 
           <div className="max-w-7xl mx-auto w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="text-left animate-fade-in-up">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div className="text-center md:text-left animate-fade-in-up">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#077D93]/10 text-[white] text-sm font-semibold mb-8 border border-[#077D93]/20">
                   <span className="w-2 h-2 bg-[#D0A933] rounded-full mr-2 animate-pulse"></span>
-                  Admissions Open - 2026
+                  Available on Youtube
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] text-white">
@@ -57,11 +57,11 @@ export default function Home() {
                   <span className="text-[#D0A933]">Driven</span> by Excellence
                 </h2>
 
-                <p className="text-base sm:text-lg text-[#E6E6E6] mb-8 sm:mb-12 max-w-xl leading-relaxed">
+                <p className="text-base sm:text-lg text-[#E6E6E6] mb-8 sm:mb-12 max-w-xl leading-relaxed mx-auto md:mx-0">
                   Guided learning under experienced mentors. Structured paths, rigorous practice, and timeless principles for modern success.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6 mb-4">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-4 justify-center md:justify-start">
                   <Link
                     href="/courses"
                     className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-2xl shadow-[#D0A933]/10 text-center text-xs sm:text-sm uppercase tracking-widest"
@@ -77,17 +77,17 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative hidden lg:block">
+              <div className="relative hidden md:block">
                 <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 group">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <img
                     src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070"
                     alt="Satyakul Paathshala"
-                    className="w-full h-[500px] object-cover"
+                    className="w-full h-[350px] lg:h-[500px] object-cover"
                   />
-                  <div className="absolute bottom-10 left-10 right-10">
+                  <div className="absolute bottom-6 left-6 right-6 lg:bottom-10 lg:left-10 lg:right-10">
                     <div className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-2">Live Heritage</div>
-                    <h3 className="text-3xl font-serif font-bold text-white">Ancient Wisdom Meet Modern Excellence</h3>
+                    <h3 className="text-xl lg:text-3xl font-serif font-bold text-white">Ancient Wisdom Meet Modern Excellence</h3>
                   </div>
                 </div>
                 {/* Decorative Elements */}
@@ -101,42 +101,42 @@ export default function Home() {
         {/* Feature Icons Section */}
         <section className="py-20 border-t border-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-              {/* Guru-Shishya Mentorship */}
-              <div className="group">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              {/* Education with Mentorship */}
+              <div className="group p-6 md:p-0 rounded-2xl md:rounded-none bg-white/5 md:bg-transparent border border-white/10 md:border-0 hover:border-[#D0A933]/30 md:hover:border-0 transition-all">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-5 mb-4 md:mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#D0A933]/20 to-[#D0A933]/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#D0A933]/20 shadow-lg shadow-[#D0A933]/5">
                     <School className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Education with Mentorship</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-white">Education with Mentorship</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base md:text-lg leading-relaxed text-center md:text-left md:pl-4 md:border-l border-white/10">
                   Learn directly from seasoned mentors who guide your spiritual and intellectual growth.
                 </p>
               </div>
 
               {/* Structured Curriculum */}
-              <div className="group">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+              <div className="group p-6 md:p-0 rounded-2xl md:rounded-none bg-white/5 md:bg-transparent border border-white/10 md:border-0 hover:border-[#D0A933]/30 md:hover:border-0 transition-all">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-5 mb-4 md:mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#077D93]/20 to-[#077D93]/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#077D93]/20 shadow-lg shadow-[#077D93]/5">
                     <Layout className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Structured Curriculum</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-white">Structured Curriculum</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base md:text-lg leading-relaxed text-center md:text-left md:pl-4 md:border-l border-white/10">
                   Follow a clear, systematic path of learning designed for comprehensive mastery.
                 </p>
               </div>
 
               {/* Proven Outcomes */}
-              <div className="group">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-4 sm:mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-white/10 shadow-inner">
+              <div className="group p-6 md:p-0 rounded-2xl md:rounded-none bg-white/5 md:bg-transparent border border-white/10 md:border-0 hover:border-[#D0A933]/30 md:hover:border-0 transition-all">
+                <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-5 mb-4 md:mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#D0A933]/20 to-[#D0A933]/5 flex items-center justify-center text-3xl group-hover:scale-110 smooth-transition border border-[#D0A933]/20 shadow-lg shadow-[#D0A933]/5">
                     <GraduationCap className="text-[#D0A933]" suppressHydrationWarning />
                   </div>
-                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-white border-b border-[#D0A933]/30 pb-2">Proven Outcomes</h3>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-white">Proven Outcomes</h3>
                 </div>
-                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed pl-0 sm:pl-4 border-l-0 sm:border-l border-white/10">
+                <p className="text-[#E6E6E6] text-base md:text-lg leading-relaxed text-center md:text-left md:pl-4 md:border-l border-white/10">
                   Achieve tangible, career-enhancing results through disciplined practice and assessment.
                 </p>
               </div>
@@ -174,8 +174,8 @@ export default function Home() {
               </div>
 
               {/* Text Side */}
-              <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D0A933]/10 border border-[#D0A933]/20 text-[#D0A933] text-xs font-bold uppercase tracking-widest mb-6">
+              <div className="order-1 lg:order-2 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D0A933]/10 border border-[#D0A933]/20 text-[#D0A933] text-xs font-bold uppercase tracking-widest mb-6 mx-auto lg:mx-0">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#D0A933]"></span>
                   About Our Institution
                 </div>
@@ -185,18 +185,18 @@ export default function Home() {
                   <span className="text-teal-500">Wisdom</span> & <span className="text-[#D0A933]">Character</span>
                 </h2>
 
-                <p className="text-[#E6E6E6] text-base sm:text-lg leading-relaxed mb-4 sm:mb-6">
+                <p className="text-[#E6E6E6] text-justify sm:text-lg leading-relaxed mb-4 sm:mb-6">
                   Satyakul Paathshala was founded with a singular mission: to bridge the gap between ancient Gurukul values and the demands of the modern world. We believe that true education goes beyond textbooks—it creates character, instills discipline, and fosters a lifelong thirst for knowledge.
                 </p>
 
-                <p className="text-[#E6E6E6]/80 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+                <p className="text-[#E6E6E6]/80 text-justify sm:text-lg leading-relaxed mb-6 sm:mb-8">
                   Here, every student is a "Shishya," guided by dedicated mentors on a path of self-discovery and intellectual rigour. Our campus is a living ecosystem of learning, designed to inspire focus and creativity.
                 </p>
 
                 {/* Stats or Features Mini-grid */}
-                <div className="grid grid-cols-2 gap-4 sm:gap-6 border-t border-white/10 pt-6 sm:pt-8">
+                <div className="grid grid-cols-2 gap-4 sm:gap-6 border-t border-white/10 pt-6 sm:pt-8 text-center lg:text-left">
                   <div>
-                    <h4 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">50+</h4>
+                    <h4 className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">5+</h4>
                     <p className="text-[#CFE6EA] text-sm">Expert Mentors</p>
                   </div>
                   <div>
@@ -205,7 +205,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-10">
+                <div className="mt-10 flex justify-center lg:justify-start">
                   <Link href="/about" className="text-[#D0A933] font-bold hover:text-white smooth-transition flex items-center gap-2 group tracking-widest uppercase text-sm">
                     Discover Our Story <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
@@ -222,11 +222,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6 sm:gap-8">
               <div>
-                <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Teachings</h2>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-[#D0A933] mb-4">Current Lessons</h2>
                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white">Newest Course Launch</h3>
               </div>
               <Link href="/courses" className="text-[#D0A933] font-bold hover:underline flex items-center gap-2 group text-sm sm:text-lg uppercase tracking-widest">
-                Explore All Offerings <span className="group-hover:translate-x-1 transition-transform">→</span>
+                Explore All Courses <span className="group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -251,7 +251,7 @@ export default function Home() {
                 <div className="lg:w-1/2 p-6 sm:p-8 lg:p-16 flex flex-col justify-center">
                   <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <span className="text-xs font-bold uppercase text-[#D0A933] bg-[#D0A933]/10 px-4 py-1.5 rounded-full border border-[#D0A933]/20">
-                      High Demand
+                      Latest
                     </span>
                     <span className="text-sm text-[#CFE6EA] flex items-center gap-1.5">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -278,7 +278,7 @@ export default function Home() {
                       href={`/courses/${latestCourse.id}`}
                       className="bg-[#D0A933] text-[#0B0B0B] font-bold px-6 sm:px-10 py-3 sm:py-4 rounded-xl hover:bg-[#b8952d] smooth-transition shadow-xl text-center uppercase tracking-widest text-xs sm:text-sm w-full sm:w-auto"
                     >
-                      Enroll in Course
+                      Enroll Now
                     </Link>
                   </div>
                 </div>

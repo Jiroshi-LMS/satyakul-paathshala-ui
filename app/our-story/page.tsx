@@ -10,38 +10,38 @@ import { GraduationCap, Award, BookOpen, Users, Quote, Star, ArrowRight } from '
 const facultyMembers = [
     {
         id: 1,
-        name: 'Dr. Ramesh Sharma',
-        title: 'Principal & Sanskrit Scholar',
+        name: 'Mr. Ashish Singh Rajput',
+        title: 'Head of Academics',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-        specialization: 'Vedic Literature & Philosophy',
-        experience: '25+ Years',
+        specialization: 'Physics & Mathematics',
+        experience: '8+ Years',
         description: 'A renowned scholar with expertise in ancient Vedic texts and their modern applications.',
     },
     {
         id: 2,
-        name: 'Prof. Anita Desai',
-        title: 'Head of Academics',
+        name: 'Ms. Aarushi Singh',
+        title: 'Biology Faculty',
         image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face',
-        specialization: 'Mathematics & Logic',
-        experience: '18 Years',
+        specialization: 'Zoology',
+        experience: '3+ Years',
         description: 'Passionate about making complex mathematical concepts accessible through traditional teaching methods.',
     },
     {
         id: 3,
-        name: 'Shri Vikram Joshi',
+        name: 'Mr. Ajay Rajput',
         title: 'Senior Mentor',
         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
-        specialization: 'Dharmic Studies & Ethics',
-        experience: '20 Years',
+        specialization: 'Chemistry & Mathematics',
+        experience: '5+ Years',
         description: 'Guides students in understanding life principles through ancient wisdom and modern context.',
     },
     {
         id: 4,
-        name: 'Dr. Meera Kulkarni',
+        name: 'Mrs. Shaalu Singh Rajput',
         title: 'Science Faculty',
         image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face',
-        specialization: 'Ayurveda & Natural Sciences',
-        experience: '15 Years',
+        specialization: 'Botany',
+        experience: '3+ Years',
         description: 'Integrates traditional Ayurvedic knowledge with contemporary scientific understanding.',
     },
 ];
@@ -137,15 +137,15 @@ export default function OurStoryPage() {
 
                         <div className="flex flex-wrap justify-center gap-8 text-center">
                             <div className="px-8">
-                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">50+</h3>
+                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">5+</h3>
                                 <p className="text-[#CFE6EA] text-sm uppercase tracking-widest">Expert Mentors</p>
                             </div>
                             <div className="px-8 border-l border-white/10">
-                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">1000+</h3>
+                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">100+</h3>
                                 <p className="text-[#CFE6EA] text-sm uppercase tracking-widest">Alumni Network</p>
                             </div>
                             <div className="px-8 border-l border-white/10">
-                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">25+</h3>
+                                <h3 className="text-4xl font-serif font-bold text-[#D0A933] mb-2">6+</h3>
                                 <p className="text-[#CFE6EA] text-sm uppercase tracking-widest">Years of Legacy</p>
                             </div>
                         </div>

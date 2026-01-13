@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useState, useEffect } from 'react';
-import { LogOut, User, Menu, X } from 'lucide-react';
+import { LogOut, User, Menu, X, BookOpen, Settings, ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
     const { user, logout, loading } = useAuth();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -68,25 +69,71 @@ export default function Navbar() {
                         {loading ? (
                             <div className="w-20 h-8 bg-white/5 animate-pulse rounded-lg" />
                         ) : user ? (
-                            <div className="flex items-center space-x-6">
-                                <Link
-                                    href="/profile"
-                                    className="flex items-center space-x-2 xl:space-x-3 text-[11px] xl:text-[13px] font-medium text-white/90 hover:text-[#D0A933] smooth-transition uppercase tracking-[0.15em] xl:tracking-[0.2em]"
+                            <div className="flex items-center space-x-6 relative">
+                                <button
+                                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                                    className="flex items-center space-x-2 xl:space-x-3 text-[11px] xl:text-[13px] font-medium text-white/90 hover:text-[#D0A933] smooth-transition uppercase tracking-[0.15em] xl:tracking-[0.2em] focus:outline-none"
                                 >
                                     <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/10">
                                         <span className="text-[10px] text-[#D0A933]">
                                             {user.first_name?.[0] || user.identifier?.[0]?.toUpperCase()}
                                         </span>
                                     </div>
-                                    <span>Account</span>
-                                </Link>
-                                {mounted && (
-                                    <button
-                                        onClick={handleLogout}
-                                        className="text-white/60 hover:text-white smooth-transition"
-                                    >
-                                        <LogOut className="w-5 h-5" />
-                                    </button>
+                                    <span className="hidden xl:inline">{user.first_name || 'Account'}</span>
+                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                </button>
+
+                                {isDropdownOpen && (
+                                    <>
+                                        {/* Backdrop to close dropdown */}
+                                        <div
+                                            className="fixed inset-0 z-40 cursor-default"
+                                            onClick={() => setIsDropdownOpen(false)}
+                                        />
+
+                                        {/* Dropdown Menu */}
+                                        <div className="absolute top-12 right-0 w-56 bg-[#04414d] border border-white/10 rounded-xl shadow-xl z-50 overflow-hidden animate-fade-in-up origin-top-right">
+                                            <div className="p-4 border-b border-white/10 bg-white/5">
+                                                <p className="text-white font-bold text-sm truncate">{user.first_name || 'User'}</p>
+                                                <p className="text-white/50 text-xs truncate">{user.identifier}</p>
+                                            </div>
+
+                                            <div className="py-2">
+                                                <Link
+                                                    href="/my-courses"
+                                                    onClick={() => setIsDropdownOpen(false)}
+                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-white/90 hover:bg-white/5 hover:text-[#D0A933] transition-colors"
+                                                >
+                                                    <BookOpen className="w-4 h-4" />
+                                                    <span>My Courses</span>
+                                                </Link>
+
+                                                <Link
+                                                    href="/profile"
+                                                    onClick={() => setIsDropdownOpen(false)}
+                                                    className="flex items-center gap-3 px-4 py-3 text-sm text-white/90 hover:bg-white/5 hover:text-[#D0A933] transition-colors"
+                                                >
+                                                    <Settings className="w-4 h-4" />
+                                                    <span>Account Settings</span>
+                                                </Link>
+
+                                                <div className="h-[1px] bg-white/5 mx-4 my-1" />
+
+                                                {mounted && (
+                                                    <button
+                                                        onClick={() => {
+                                                            setIsDropdownOpen(false);
+                                                            handleLogout();
+                                                        }}
+                                                        className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-400 hover:bg-red-400/10 transition-colors text-left"
+                                                    >
+                                                        <LogOut className="w-4 h-4" />
+                                                        <span>Sign Out</span>
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </>
                                 )}
                             </div>
                         ) : (
@@ -133,7 +180,7 @@ export default function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="px-4 py-3 text-lg font-serif font-bold text-white hover:text-[#D0A933] smooth-transition"
+                                className="px-4 py-2 text-base font-sans font-semibold text-white hover:text-[#D0A933] smooth-transition"
                             >
                                 {link.name}
                             </Link>
@@ -145,27 +192,47 @@ export default function Navbar() {
                     <div className="flex flex-col space-y-4 px-4">
                         {user ? (
                             <>
-                                <Link
-                                    href="/profile"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center space-x-4 p-4 rounded-xl bg-white/5 border border-white/5"
-                                >
-                                    <div className="w-10 h-10 rounded-full bg-[#D0A933]/10 text-[#D0A933] flex items-center justify-center font-bold">
-                                        {user.first_name?.[0] || user.identifier?.[0]?.toUpperCase()}
+                                <div className="p-3 rounded-lg bg-white/5 border border-white/5">
+                                    <div className="flex items-center space-x-3 mb-3">
+                                        <div className="w-8 h-8 rounded-full bg-[#D0A933]/10 text-[#D0A933] flex items-center justify-center font-bold text-sm">
+                                            {user.first_name?.[0] || user.identifier?.[0]?.toUpperCase()}
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="text-white font-bold text-sm">{user.first_name || 'My Account'}</span>
+                                            <span className="text-[10px] text-white/50 truncate max-w-[150px]">{user.identifier}</span>
+                                        </div>
                                     </div>
-                                    <div className="flex flex-col">
-                                        <span className="text-white font-bold">{user.first_name || 'My Account'}</span>
-                                        <span className="text-xs text-white/50">{user.identifier}</span>
+
+                                    <div className="space-y-1">
+                                        <Link
+                                            href="/my-courses"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/5 hover:text-[#D0A933] rounded-md transition-colors"
+                                        >
+                                            <BookOpen className="w-3.5 h-3.5" />
+                                            <span>My Courses</span>
+                                        </Link>
+
+                                        <Link
+                                            href="/profile"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            className="flex items-center gap-3 px-3 py-2 text-sm font-medium text-white/90 hover:bg-white/5 hover:text-[#D0A933] rounded-md transition-colors"
+                                        >
+                                            <Settings className="w-3.5 h-3.5" />
+                                            <span>Account Settings</span>
+                                        </Link>
                                     </div>
-                                </Link>
+                                </div>
+
                                 <button
                                     onClick={() => {
                                         setIsMobileMenuOpen(false);
                                         handleLogout();
                                     }}
-                                    className="px-5 py-4 text-sm font-bold text-red-400 bg-red-400/5 border border-red-400/10 rounded-xl text-center"
+                                    className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-red-400 bg-red-400/5 border border-red-400/10 rounded-lg hover:bg-red-400/10 transition-colors"
                                 >
-                                    Sign out
+                                    <LogOut className="w-3.5 h-3.5" />
+                                    <span>Sign Out</span>
                                 </button>
                             </>
                         ) : (
